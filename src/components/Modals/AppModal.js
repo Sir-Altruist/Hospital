@@ -1,4 +1,6 @@
 import React, { useState, forwardRef } from 'react'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { 
     DialogContent, 
     DialogActions, 
@@ -13,8 +15,14 @@ import {
     MenuItem,
     Select,
     InputLabel,
-    TextareaAutosize
+    TextareaAutosize,
+    Typography
 } from '@mui/material'
+
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+})
 
 const AppModal = ({ close, open }) => {
 
@@ -22,10 +30,12 @@ const AppModal = ({ close, open }) => {
     const handleGenderChange = e => setGender(e.target.value)
     const [department, setDepartment] = useState('')
     const handleDepartmentChange = e => setDepartment(e.target.value)
+    const [branch, setBranch] = useState('')
+    const handleBranchChange = e => setBranch(e.target.value)
 
-    const Transition = forwardRef(function Transition(props, ref) {
-        return <Slide direction="up" ref={ref} {...props} />;
-    })
+    //responsive dialogue box
+    const theme = useTheme()
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
         <Box component='div'>
@@ -33,6 +43,8 @@ const AppModal = ({ close, open }) => {
                 open={open} 
                 onClose={close}
                 TransitionComponent={Transition}
+                scroll={'paper'}
+                fullScreen={fullScreen}
                 keepMounted
                 aria-describedby="alert-dialog-slide-description"           
              >
@@ -119,6 +131,36 @@ const AppModal = ({ close, open }) => {
           <MenuItem value={'Department 4'}>Department 4</MenuItem>
           <MenuItem value={'Department 5'}>Department 5</MenuItem>
         </Select>
+      </FormControl>
+        </DialogContent>
+        <DialogContent>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 190 }}>
+        <InputLabel id="demo-simple-select-standard-label">Branch</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={branch}
+          onChange={handleBranchChange}
+          label="branch"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={'Oyo'}>Oyo</MenuItem>
+          <MenuItem value={'Ogun'}>Ogun</MenuItem>
+          <MenuItem value={'Delta'}>Delta</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 190 }}>
+        <div>
+          <Typography variant='body2' sx={{ paddingBottom: '.5rem'}}>Branch Street</Typography>
+          {
+          branch === 'Oyo' ? <Typography>Oyo Street</Typography> 
+          : branch === 'Ogun' ? <Typography>Ogun Street</Typography> 
+          : branch === 'Delta' ? <Typography>Delta Street</Typography> 
+          : ''
+          }
+        </div>
       </FormControl>
         </DialogContent>
         <DialogContent>

@@ -11,7 +11,7 @@
   height: 5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -53,7 +53,9 @@
 }
 
 .nav-links:hover {
-  background-color: #1888ff;
+  /* background-color: #1888ff; */
+  background-color: #17202A;
+  color: #ffffff;
   border-radius: 4px;
   transition: all 0.2s ease-out;
 }
@@ -81,11 +83,12 @@
   text-align: start;
 }
 .dropdown-menu li {
-  background: #1888ff;
+  background-color: #17202A;
   cursor: pointer;
 }
 .dropdown-menu li:hover {
-  background: #5cabff;
+  /* background: #5cabff; */
+  background: #7b7d80;
 }
 .dropdown-menu.clicked {
   display: none;
@@ -185,11 +188,100 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin-bottom: 5rem;
 }
 .section-4 {
-  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.footer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+}
+.contact, .quick, .department, .group {
+  color: white;
+  padding-top: 10rem;
+  position: relative;
 }
 
+.contact::after, .quick::after, .department::after, .group::after {
+  content: '';
+  width: 5rem;
+  height: 1px;
+  position: absolute;
+  background-color: red;
+  top: 12.5rem;
+  left: 4rem;
+}
+.quick::after, .department::after {
+  left: 6rem
+}
+.group::after {
+  left: 6rem
+}
+.contact-one, .contact-two, .contact-three {
+  display: flex;
+  text-align: center;
+  padding-top: 5rem;
+}
+.contact-two, .contact-three {
+  padding-top: 2rem;
+}
+.social {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.dept-links {
+  list-style-type: none;
+  margin-top: 5rem;
+  font-size: .9rem;
+}
+.dept-links li {
+  text-decoration: none;
+  padding-bottom: 1rem;
+}
+.modal-list {
+  list-style-type: none;
+}
+.login {
+  flex-grow: 1;
+  background-color: #C4C4C41A;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+.login-card {
+  position: absolute;
+  width: 40%;
+  min-height: 60%;
+  top: 10rem;
+  bottom: 4rem;
+  left: 30%;
+  right: 30%;
+  border-radius: 5%;
+}
+.form {
+  margin: 5rem 0;
+}
+.field {
+  /* margin-top: 3rem; */
+  padding-bottom: 10rem;
+  /* background-color: #f6f6f6; */
+}
+.login-btn {
+  margin-top: 3rem;
+  text-align: center;
+} 
+.try {
+  color: white;
+  text-decoration: none;
+}
+.sidemenu {
+  /* padding-top: 2rem;
+  display: flex;
+  justify-content: space-around; */
+}
 @media screen and (max-width: 900px) {
   .fa-caret-down {
     display: none;
