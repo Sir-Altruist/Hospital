@@ -1,0 +1,43 @@
+.contact {
+  flex-grow: 1;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #c4c4c41a;
+  padding-top: 3rem;
+}
+
+.contact-img {
+  width: 100%;
+  min-height: 60vh;
+}
+
+.contact-card {
+  width: 90%;
+  min-height: 60vh;
+  margin: 5rem auto;
+  border-radius: 5%;
+  margin-left: 10%;
+}
+
+.contact-form {
+  margin: 2rem 0 2rem 0;
+}
+
+.contact-title {
+  font-weight: bold;
+}
+
+.contact-field {
+  margin-bottom: 1rem;
+  background-color: #e8e8e880;
+}
+.contact-btn {
+  background-color: #6056d7;
+  text-transform: inherit;
+  color: #ffffff;
+  width: 8rem;
+}
+
+.contact-btn:hover {
+  background-color: #6056d7;
+}

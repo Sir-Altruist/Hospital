@@ -1,20 +1,17 @@
-import React from 'react'
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
-import { carouselData  } from './data';
-
-
+import React from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import MobileStepper from "@mui/material/MobileStepper";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
+import { carouselData } from "./data";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
 
 function Sliders() {
   const theme = useTheme();
@@ -34,22 +31,28 @@ function Sliders() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, marginTop: '15rem' }}>
+    <Box sx={{ flexGrow: 1, marginTop: "10rem" }}>
       <Paper
         square
         elevation={0}
         sx={{
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           height: 50,
           pl: 2,
-          bgcolor: 'background.default',
+          bgcolor: "background.default",
         }}
       >
-        <Typography variant='body1' align='center' sx={{ textAlign: 'center', fontWeight: 'bold'}}>{carouselData[activeStep].name}</Typography>
+        <Typography
+          variant="body1"
+          align="center"
+          sx={{ textAlign: "center", fontWeight: "bold" }}
+        >
+          {carouselData[activeStep].name}
+        </Typography>
       </Paper>
       <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
@@ -61,10 +64,10 @@ function Sliders() {
                 component="img"
                 sx={{
                   height: 255,
-                  display: 'block',
-                //   maxWidth: 550,
-                  overflow: 'hidden',
-                  width: '100%',
+                  display: "block",
+                  //   maxWidth: 550,
+                  overflow: "hidden",
+                  width: "100%",
                 }}
                 src={step.img}
                 alt={step.name}
@@ -84,7 +87,7 @@ function Sliders() {
             disabled={activeStep === maxSteps - 1}
           >
             Next
-            {theme.direction === 'rtl' ? (
+            {theme.direction === "rtl" ? (
               <KeyboardArrowLeft />
             ) : (
               <KeyboardArrowRight />
@@ -93,7 +96,7 @@ function Sliders() {
         }
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
+            {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (
               <KeyboardArrowLeft />
@@ -106,4 +109,4 @@ function Sliders() {
   );
 }
 
-export default Sliders
+export default Sliders;
