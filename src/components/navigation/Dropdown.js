@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { aboutItems, medicalItems, servicesItems } from '../menuItems'
+import { aboutItems, medicalItems, servicesItems } from './menuItems'
 import { Link } from 'react-router-dom'
 
 export const AboutDropdown = () => {

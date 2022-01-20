@@ -4,7 +4,9 @@ import Locations from './pages/Locations'
 import Department from './pages/Department'
 import Midwifery from './pages/Midwifery'
 import Contact from './pages/Contact'
-import Login from './pages/Login'
+import Doctor from './pages/Login/Doctor'
+import Nurse from './pages/Login/Nurse'
+import Administrator from './pages/Login/Administrator'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -21,7 +23,9 @@ function App() {
   <BrowserRouter>
   <Routes>
         <Route path='/' exact element={<Landing />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login/doctor' element={<Doctor />} />
+        <Route path='/login/nurse' element={<Nurse />} />
+        <Route path='/login/administrator' element={<Administrator />} />
         <Route path='/locations' element={<Locations />} />
         <Route path='/midwifery' element={<Midwifery />} />
         <Route path='/contact' element={<Contact />} />

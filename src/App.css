@@ -7,7 +7,7 @@
 
 /* Navbar css */
 .navbar {
-  /* background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%); */
+  background-color: #F9FBFF;
   height: 5rem;
   display: flex;
   flex-direction: row;
@@ -21,12 +21,24 @@
   cursor: pointer;
   text-decoration: none;
   font-size: 1.5rem;
+  word-break: keep-all;
 }
 
-/* .fa-firstdraft {
-  margin-left: 0.5rem;
-  font-size: 1.6rem;
-} */
+.doctor {
+  text-transform: inherit;
+  background-color: #F6F6F6;
+  font-weight: bold;
+}
+.doctor-active {
+  border: 1px solid #6056D7;
+  text-transform: inherit;
+  background-color: #F6F6F6;
+  font-weight: bold;
+}
+.log-btns {
+  text-align: center;
+  padding-top: 2rem;
+}
 
 .nav-menu {
   color: #000000;
@@ -46,10 +58,10 @@
 }
 
 .nav-links {
-  color: white;
+  color: #000000;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  color: #000000;
+  font-weight: 600;
 }
 
 .nav-links:hover {
@@ -105,19 +117,28 @@
 .landing {
   width: 100%;
   min-height: 100vh;
-  /* margin-top: 5rem; */
-  background: linear-gradient(#F0F5FFB2, #0F4ABDB2), url('./assets/images/doctor.jpeg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #F9FBFF;
   margin-bottom: 5rem;
 }
 
 .chart {
-  width: 35rem;
+  width: 100%;
   height: 25rem;
-  margin: 10rem auto 0 auto;
+  margin: 15rem auto 0 3rem;
+
 }
+.icon {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  /* justify-content: center; */
+  align-items: center;
+}
+.leftSide {
+  padding-top: 15rem;
+  font-weight: 700;
+}
+
 .bg-text {
   padding-top: 15rem;
   font-weight: bold;
@@ -276,11 +297,76 @@
 .try {
   color: white;
   text-decoration: none;
+  font-weight: 600;
 }
-.sidemenu {
-  /* padding-top: 2rem;
-  display: flex;
-  justify-content: space-around; */
+
+.btn-glow {
+  border: 1px transparent;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  color: #eeeeee;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial;
+  font-size: 20px;
+  padding: 8px 30px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: inherit;
+  margin-left: 20px;
+  -webkit-animation: glowing 1300ms infinite;
+  -moz-animation: glowing 1300ms infinite;
+  -o-animation: glowing 1300ms infinite;
+  animation: glowing 1300ms infinite;
+}
+@-webkit-keyframes glowing {
+  0% {
+    background-color: red;
+    -webkit-box-shadow: 0 0 3px red;
+  }
+  50% {
+    background-color: rgb(231, 61, 61);
+    -webkit-box-shadow: 0 0 15px rgb(231, 61, 61);
+  }
+  100% {
+    background-color: red;
+    -webkit-box-shadow: 0 0 3px red;
+  }
+}
+@keyframes glowing {
+  0% {
+    background-color: red;
+    box-shadow: 0 0 3px red;
+  }
+  50% {
+    background-color: rgb(231, 61, 61);
+    box-shadow: 0 0 15px rgb(231, 61, 61);
+  }
+  100% {
+    background-color: red;
+    box-shadow: 0 0 3px red;
+  }
+}
+.btn-glow:hover::before {
+  filter: blur(20px); 
+  opacity: 1;
+}
+.btn-glow:hover {
+  animation: glow 1s ease-in infinite;
+}
+@keyframes glow {
+  0% {
+    background: red;
+    box-shadow: 0 0 3px red;
+  }
+  50% {
+    background: rgb(231, 61, 61);
+    box-shadow: 0 0 3px rgb(231, 61, 61);
+  }
+  100% {
+    background: red;
+    box-shadow: 0 0 3px red;
+  }
 }
 @media screen and (max-width: 900px) {
   .fa-caret-down {
@@ -292,7 +378,8 @@
   }
 
   .brand {
-    margin-left: -17rem;
+    /* margin-left: -17rem; */
+    color: #000000
   }
 
   .nav-menu {

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box, Container, Grid, Typography, TextField, Button } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { Box, Container, Grid, Typography, Button } from '@mui/material'
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
@@ -8,63 +8,100 @@ import InstagramIcon from '@mui/icons-material/Instagram'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import Navbar from '../components/navigation/Navbar'
-import Chart from '../assets/images/chart.png'
-import Appointment from '../components/Appointment'
 import Carousel from 'react-material-ui-carousel'
-import { testimonies, clients } from '../components/data'
+import { testimonies, clients, location } from '../components/data'
 import Testimonials from '../components/Testimonials'
 import Client from '../components/Client'
 import { Link } from 'react-router-dom'
+import Health from '../assets/images/health-remove.png'
+import Location from '../components/Location'
+import Sliders from '../components/Sliders'
+import AppModal from '../components/Modals/AppModal'
+// import PopModal from '../components/Modals/PopModal'
+
 
 
 const Landing = () => {
 
     const date = new Date()
     const year = date.getFullYear()
+    
+    //appointment modal
+    const [open, setOpen] = useState(false)
+    // const [open2, setOpen2] = useState(false)
+    const handleOpen = () => setOpen(true)
+    const handleClose = () => setOpen(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setOpen(true)    
+        }, 10000)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [])
+
     return (
         <>
          <Navbar />
-         <Box component='div' className='landing'>
-             <Container>
-                 <Grid container>
-                    <Grid item xs={12} md={5}>
-                        <Typography variant='h4' className='bg-text'>
-                            Ola Cathlic Hospital
-                        </Typography>
-                        <Typography variant='body1' className='bg-para'>
-                            We continue to strive to create products that are worth selling with the best quality for you. 
-                            By joining us you will get more benefits. 
-                            Expand the reach of your business and make a profit together
-                        </Typography>
-                        <form noValidate autoComplete='off' className='form'>
-                            <TextField
-                            size='small'
-                            // fullWidth
-                            variant='outlined'
-                            placeholder='Search for a location...'
-                            className='textfield' />
-                        <Button 
-                        type="submit"
-                        variant='contained'
-                        className='search'
-                        aria-label="search"
-                        color='primary'
-                        >
-                        <i className='fas fa-search'></i>
-                        </Button>
-                    </form>
-                    </Grid>
-                    <Grid item xs={12} md={1}></Grid>
-                     <Grid item xs={12} md={6}>
-                         <img src={Chart} alt='chart' className='chart' />
-                     </Grid>
-                 </Grid>
-             </Container>
+        <Box
+        component='div'
+        className='landing'
+        >
+            <Container>
+            <Grid container sx={{mt:5}}>
+                <Grid item sm={12} md={6} className='leftSide'>
+                    <Typography variant='h3' sx={{ fontSize: '3rem', fontWeight: '600', color: '#342D7E'}}>OLU Catholic Hospital</Typography>
+                    <Typography sx={{ pt: 2}}>
+                        We provide qualitative health services to our patients on daily basis. 
+                        Our standard facilities aid our operations for timely and quality service delivery <br /> in all our branches across Nigeria
+                    </Typography>
+                    <div className='icon'>
+                        {location.map((single, i) => {
+                            return (
+                                <Location key={i} single={single} />
+                            )
+                        })}
+                    </div>
+                    <div style={{ display: 'flex'}}>
+                        <Button variant='contained' type='button' sx={{mr: 2}} onClick={handleOpen}>Book Appointment</Button>
+                        <Button variant='contained' type='button' color='success'>Collect Test Result</Button>
+                    </div>
+                </Grid>
+                <Grid item sm={12} md={1}></Grid>
+                  <Grid item sm={12} md={5} className='rightSide'>
+                      <Sliders />
+                  </Grid>
+                  <div style={{ backgroundColor: 'black', width: '100%', height: '10rem', marginTop: '2rem'}}></div>
+            </Grid>
+        </Container>
+        <AppModal close={handleClose} open={open} />
+        {/* <PopModal close={handleClose1} open={open2} /> */}
         </Box>
         <Box component='div' className='section-2'>
             <Container>
-            <Grid container>
-                <Grid item xs={12} md={4}>
+            <Grid container sx={{ marginTop: '15rem'}}>
+                <Grid item sm={12} md={4}>
+                    <img src={Health} alt='health'/>
+                </Grid>
+                <Grid item sm={12} md={3}>
+                </Grid>
+                <Grid item sm={12} md={5}>
+                    <Typography variant='h3' sx={{ paddingTop: '10rem'}}>24/7 Service Avaialble</Typography>
+                    <Typography variant='h6' sx={{ paddingTop: '1rem', textAlign: 'center'}}>Call Ambulance for Emergency</Typography>
+                    <div style={{ textAlign: 'center', marginTop: '1rem'}}>
+                    <Button
+                    variant='contained'
+                    size='large'
+                    className='btn-glow'
+                    >
+                          Request for an Ambulance
+                    </Button>
+                    </div>
+                </Grid>
+                <Grid></Grid>
+                {/* <Grid item xs={12} md={4}>
                     <Typography variant='h5' color='textSecondary'>Give us a call</Typography>
                     <div className='call'>
                     <i className='fas fa-phone'></i>
@@ -86,11 +123,11 @@ const Landing = () => {
                         3, Alfred Rewande Street Opebi, off salvation street, ikeja lagos
                     </Typography>
                     </div>
-                </Grid>
+                </Grid> */}
             </Grid>
-            <Grid container spacing={3} mt={3}>
+            {/* <Grid container spacing={3} mt={3}>
                 <Appointment />
-            </Grid>
+            </Grid> */}
             </Container>
         </Box>
         <Box component='div' className='section-3'>
