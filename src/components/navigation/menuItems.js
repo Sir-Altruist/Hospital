@@ -59,5 +59,10 @@ export const servicesItems = [
         name: 'Other Laboratory',
         path: '/department/laboratory',
         cName: 'dropdown-link'
+    },
+    {
+        name: 'Paediatric',
+        path: '/department/paediatric',
+        cName: 'dropdown-link'
     }
 ]

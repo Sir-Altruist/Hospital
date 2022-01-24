@@ -1,4 +1,4 @@
-.contact {
+.contact-root, .about-root {
   flex-grow: 1;
   width: 100%;
   min-height: 100vh;
@@ -7,37 +7,59 @@
 }
 
 .contact-img {
-  width: 100%;
-  min-height: 60vh;
+  width: 100%!important;
+  min-height: 60vh!important;
 }
 
 .contact-card {
-  width: 90%;
-  min-height: 60vh;
-  margin: 5rem auto;
-  border-radius: 5%;
-  margin-left: 10%;
+  width: 90%!important;
+  min-height: 60vh!important;
+  margin: 5rem auto!important;
+  border-radius: 5%!important;
+  margin-left: 10%!important;
+  /* margin-top: 20%!important; */
 }
 
 .contact-form {
-  margin: 2rem 0 2rem 0;
+  margin: 2rem 0 2rem 0!important;
 }
 
 .contact-title {
-  font-weight: bold;
+  font-weight: bold!important;
+  padding-bottom: 3rem;
 }
 
 .contact-field {
-  margin-bottom: 1rem;
-  background-color: #e8e8e880;
+  margin-top: 2rem;
+  margin-bottom: 1rem!important;
+  background-color: #e8e8e880!important;
 }
 .contact-btn {
-  background-color: #6056d7;
-  text-transform: inherit;
-  color: #ffffff;
-  width: 8rem;
+  background-color: #6056d7!important;
+  text-transform: inherit!important;
+  color: #ffffff!important;
+  width: 8rem!important;
 }
 
 .contact-btn:hover {
   background-color: #6056d7;
+}
+.about-root {
+  padding: 10rem 0 1rem 0
+}
+.about-card {
+  border-radius: 5%!important;
+  border: 2px solid!important;
+  border-top-color: rgb(201, 177, 223)!important;
+  border-right-color: rgb(201, 177, 223)!important;
+  border-bottom-color: rgb(201, 177, 223)!important;
+  border-left-color: #ffffff!important;
+  margin-bottom: 3rem!important;
+}
+.about-title {
+  padding-top: 3rem!important;
+  padding-left: 5rem!important
+}
+.about-content {
+  padding: 3rem 3rem 6rem 3rem
 }

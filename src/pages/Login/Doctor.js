@@ -54,40 +54,38 @@ const Doctor = () => {
             <div className="log-btns">
               <Button
                 variant={
-                  location.pathname === "/login/doctor" ? "contained" : ""
+                  location.pathname === '/login/doctor' ? 'contained' : ''
+                }
+                color= {
+                  location.pathname === '/login/doctor' ? 'primary' : 'inherit'
                 }
                 disableRipple
                 disableElevation
-                color={
-                  location.pathname === "/login/doctor" ? "primary" : "inherit"
-                }
                 onClick={handleDoctorRoute}
               >
                 Doctor
               </Button>
               <Button
-                variant={location.pathname === "login/nurse" ? "contained" : ""}
                 disableRipple
                 disableElevation
-                color={
-                  location.pathname === "/login/nurse" ? "primary" : "inherit"
+                variant={
+                  location.pathname === '/login/nurse' ? 'contained' : ''
+                }
+                color= {
+                  location.pathname === '/login/nurse' ? 'primary' : 'inherit'
                 }
                 onClick={handleNurseRoute}
               >
                 Nurse
               </Button>
               <Button
-                variant={
-                  location.pathname === "/login/administrator"
-                    ? "contained"
-                    : ""
-                }
                 disableRipple
                 disableElevation
-                color={
-                  location.pathname === "/login/administrator"
-                    ? "primary"
-                    : "inherit"
+                variant={
+                  location.pathname === '/login/administrator' ? 'contained' : ''
+                }
+                color= {
+                  location.pathname === '/login/administrator' ? 'primary' : 'inherit'
                 }
                 onClick={handleAdministratorRoute}
               >
@@ -144,7 +142,7 @@ const Doctor = () => {
                 </Button>
               </div>
               <Divider />
-              <Typography variant="h5" align="center" sx={{ pt: 3 }}>
+              <Typography variant="h5" align="center" sx={{ paddingTop: '5rem' }}>
                 Rota for Duty
               </Typography>
               <TextField
@@ -160,7 +158,7 @@ const Doctor = () => {
               <Button
                 color="primary"
                 variant="contained"
-                sx={{ mt: 2 }}
+                sx={{ mt: 5 }}
                 onClick={handleDisplay}
               >
                 Check

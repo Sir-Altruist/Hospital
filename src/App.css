@@ -7,7 +7,7 @@
 /* Navbar css */
 .navbar {
   background-color: #f9fbff;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -87,7 +87,7 @@
 .dropdown-menu {
   width: 13rem;
   position: absolute;
-  top: 5rem;
+  top: 4rem;
   list-style-type: none;
   text-align: start;
 }
@@ -298,7 +298,7 @@
   background-color: #c4c4c41a;
   position: relative;
 }
-.login-card {
+.login-card, .login-card-1 {
   width: 40%;
   min-height: 130vh;
   position: absolute;
@@ -306,6 +306,9 @@
   right: 30%;
   left: 30%;
   border-radius: 5%;
+}
+.login-card-1 {
+  min-height: 80vh;
 }
 .login-form {
   margin: 2rem 0;

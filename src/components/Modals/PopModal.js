@@ -10,9 +10,19 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import { Button, Collapse, ListItemIcon, TextField, Box } from "@mui/material";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
+import { Button, Collapse, ListItemIcon, TextField, Box, FormControl, InputLabel, Select, MenuItem, TextareaAutosize } from "@mui/material";
+import { servicesItems } from '../navigation/menuItems'
+import { 
+  dentalDoctors, 
+  familyDoctors, 
+  internalDoctors, 
+  surgeryDoctors, 
+  xrayDoctors, 
+  labDoctors, 
+  paedDoctors 
+} from '../available/doctorsList' ;
+import Verification from './Verification'
+
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -21,9 +31,20 @@ const Transition = forwardRef(function Transition(props, ref) {
 export default function PopModal({ open1, close1 }) {
   const [openNew, setOpenNew] = useState(false);
   const [openExisting, setOpenExisting] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false)
+  const [department, setDepartment] = useState(false)
+  const [list, setList] = useState('')
+  const [confirm, setConfirm] = useState(false)
 
   const toggleNew = () => setOpenNew(!openNew);
   const toggleExisting = () => setOpenExisting(!openExisting);
+  const toggleUpdate = () => setOpenUpdate(!openUpdate);
+  const handleChange = e => setDepartment(e.target.value)
+  const handleListChange = e => setList(e.target.value)
+  const openConfirm = () => setConfirm(true)
+  const closeConfirm = () => setConfirm(false)
+
+
 
   return (
     <div>
@@ -54,14 +75,12 @@ export default function PopModal({ open1, close1 }) {
           </Toolbar>
         </AppBar>
         <List>
-          <ListItem button>
-            <ListItemText primary="New Appointment" secondary="create" />
+          <ListItem button sx={{my: 3}}>
+            <ListItemText primary="New Appointment"  />
             <ListItemIcon>
-              {openNew ? (
-                <ExpandMore onClick={toggleNew} />
-              ) : (
-                <ExpandLess onClick={toggleNew} />
-              )}
+            <Button variant='contained' color='primary' onClick={toggleNew} style={{ textTransform: 'inherit'}}>
+              New Appointment
+            </Button>
             </ListItemIcon>
           </ListItem>
           <Collapse in={openNew} timeout="auto" unmountOnExit>
@@ -75,43 +94,147 @@ export default function PopModal({ open1, close1 }) {
                 autoComplete="off"
               >
                 <div>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="id"
-                    label="Location"
-                    type="text"
-                    fullWidth
-                    variant="standard"
-                    // className='field'
-                  />
+                <FormControl variant="standard" fullWidth sx={{ mb: 1}}>
+                  <InputLabel id="demo-simple-select-standard-label">Department</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={department}
+                    onChange={handleChange}
+                    label="Department"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {servicesItems.map((dept, i) => {
+                      return (
+                        <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                      )
+                    })}
+                  </Select>
+                </FormControl>
                 </div>
                 <div>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="id"
-                    label="Type of Need"
-                    type="text"
-                    fullWidth
-                    variant="standard"
-                    // className='field'
-                  />
+                <FormControl variant="standard" fullWidth sx={{ mb: 1}}>
+                  <InputLabel id="demo-simple-select-standard-label">Available Doctors</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={list}
+                    onChange={handleListChange}
+                    label="Available Doctors"
+                  >
+                   
+                    {
+                     department === 'Dental' 
+                    ?
+                    <span>
+                       {dentalDoctors.map((dept, i) => {
+                      return (
+                        <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                      )
+                    })}
+                    </span>
+                    : department === 'Family Medicine' 
+                    ? 
+                    <span>
+                       {familyDoctors.map((dept, i) => {
+                      return (
+                        <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                      )
+                    })}
+                    </span>
+                     : department === 'Internal Medicine' 
+                    ? 
+                    <span>
+                    {internalDoctors.map((dept, i) => {
+                   return (
+                     <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                   )
+                 })}
+                 </span> 
+                 : department === 'O & G Surgery'
+                 ?
+                 <span>
+                    {surgeryDoctors.map((dept, i) => {
+                   return (
+                     <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                   )
+                 })}
+                 </span> 
+                 : department === 'X-ray'
+                 ?
+                 <span>
+                 {xrayDoctors.map((dept, i) => {
+                return (
+                  <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                )
+              })}
+              </span> 
+              : department === 'Other Laboratory'
+              ? 
+              <span>
+                    {labDoctors.map((dept, i) => {
+                   return (
+                     <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                   )
+                 })}
+                 </span>
+                : department === 'Paediatric'
+                ? 
+                <span>
+                    {paedDoctors.map((dept, i) => {
+                   return (
+                     <MenuItem value={dept.name} key={i}>{dept.name}</MenuItem>
+                   )
+                 })}
+                 </span> :
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    }
+                  </Select>
+                </FormControl>
                 </div>
                 <div>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="id"
-                    label="Doctor's Name"
-                    type="text"
-                    fullWidth
-                    variant="standard"
-                    // className='field'
-                  />
+                <TextField
+                autoFocus
+                margin="dense"
+                id="id"
+                label="Phone Number"
+                type="text"
+                fullWidth
+                variant="standard"
+              />
                 </div>
                 <div>
-                  <Button color="primary" variant="contained" sx={{ my: 2 }}>
+                <TextField
+                autoFocus
+                margin="dense"
+                id="id"
+                label="E-mail Address"
+                type="email"
+                fullWidth
+                variant="standard"
+              />
+                </div>
+                <div>
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={3}
+                    placeholder="Description"
+                    style={{ marginTop: '2rem', width: '100%', height: '5rem', outline: '0' }}
+                />
+                </div>
+                <div>
+                  <Button 
+                  color="primary" 
+                  variant="contained" 
+                  fullWidth 
+                  sx={{ my: 2, textTransform: 'inherit' }}
+                  onClick={openConfirm}
+                  
+                  >
                     Submit
                   </Button>
                 </div>
@@ -119,15 +242,12 @@ export default function PopModal({ open1, close1 }) {
             </div>
           </Collapse>
           <Divider />
-          <ListItem button>
-            <ListItemText primary="Exisitng Appointment" secondary="Continue" />
+          <ListItem button sx={{ my: 3}}>
+            <ListItemText primary="Returning Patient" />
             <ListItemIcon>
-              {/* <AddCircleOutlineIcon color='info' /> */}
-              {openExisting ? (
-                <ExpandMore onClick={toggleExisting} />
-              ) : (
-                <ExpandLess onClick={toggleExisting} />
-              )}
+            <Button variant='contained' color='primary' onClick={toggleExisting} style={{ textTransform: 'inherit'}}>
+              Resume Appointment
+            </Button>
             </ListItemIcon>
           </ListItem>
           <Collapse in={openExisting} timeout="auto" unmountOnExit>
@@ -145,11 +265,10 @@ export default function PopModal({ open1, close1 }) {
                     autoFocus
                     margin="dense"
                     id="id"
-                    label="Location"
+                    label="Patient ID"
                     type="text"
                     fullWidth
                     variant="standard"
-                    // className='field'
                   />
                 </div>
                 <div>
@@ -157,27 +276,63 @@ export default function PopModal({ open1, close1 }) {
                     autoFocus
                     margin="dense"
                     id="id"
-                    label="Type of Need"
+                    label="Password"
                     type="text"
                     fullWidth
                     variant="standard"
-                    // className='field'
                   />
+                </div>
+                <div>
+                  <Button color="primary" fullWidth variant="contained" sx={{ my: 2, textTransform: 'inherit' }}>
+                    Submit
+                  </Button>
+                </div>
+              </Box>
+            </div>
+          </Collapse>
+          <Divider />
+          <ListItem button sx={{my: 3}}>
+            <ListItemText primary="Update Appointment" />
+            <ListItemIcon>
+            <Button variant='contained' color='primary' onClick={toggleUpdate} style={{ textTransform: 'inherit'}}>
+              Change Appointment
+            </Button>
+            </ListItemIcon>
+          </ListItem>
+          <Collapse in={openUpdate} timeout="auto" unmountOnExit>
+            <div style={{ width: "10rem", margin: "1rem auto" }}>
+              <Box
+                component="form"
+                sx={{
+                  "& > :not(style)": { m: 1, width: "25ch" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <div>
+                  <input type='date' style={{ width: '100%'}} />
                 </div>
                 <div>
                   <TextField
                     autoFocus
                     margin="dense"
                     id="id"
-                    label="Doctor's Name"
+                    label="Time"
                     type="text"
                     fullWidth
                     variant="standard"
-                    // className='field'
                   />
                 </div>
                 <div>
-                  <Button color="primary" variant="contained" sx={{ my: 2 }}>
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={3}
+                    placeholder="Description"
+                    style={{ marginTop: '2rem', width: '100%', height: '5rem', outline: '0' }}
+                />
+                </div>
+                <div>
+                  <Button color="primary" variant="contained" fullWidth sx={{ my: 2, textTransform: 'inherit' }}>
                     Submit
                   </Button>
                 </div>
@@ -186,6 +341,7 @@ export default function PopModal({ open1, close1 }) {
           </Collapse>
         </List>
       </Dialog>
+      <Verification confirm={confirm} closeConfirm={closeConfirm} /> 
     </div>
   );
 }

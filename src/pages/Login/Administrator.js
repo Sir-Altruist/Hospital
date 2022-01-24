@@ -41,7 +41,7 @@ const Administration = () => {
     <>
       <Navbar />
       <Box component="div" className="login">
-        <Card className="login-card" elevation={3}>
+        <Card className="login-card-1" elevation={3}>
           <Container>
             <Typography variant="h5" align="center" sx={{ paddingTop: "3rem" }}>
               Login as
@@ -95,7 +95,7 @@ const Administration = () => {
               }}
               noValidate
               autoComplete="off"
-              className="form"
+              className="login-form"
             >
               <TextField
                 autoFocus

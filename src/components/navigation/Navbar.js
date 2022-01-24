@@ -39,7 +39,7 @@ const Navbar = () => {
                   className="brand"
                   style={{ wordBreak: "keep-all" }}
                 >
-                  Ola Catholic
+                  O.L.A Catholic
                 </Link>
               </Typography>
               <div onClick={handleClick} className="menu-icon">

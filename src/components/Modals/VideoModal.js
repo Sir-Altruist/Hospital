@@ -10,6 +10,7 @@ import {
  } from '@mui/material'
 
 
+
 const Circular = (props) => {
     return (
         <Box
@@ -29,7 +30,7 @@ const Circular = (props) => {
 }
 
 
-const VideoModal = ({ close, open}) => {
+const VideoModal = ({ close2, open2 }) => {
 
     const [progress, setProgress] = useState(10)
 
@@ -45,12 +46,12 @@ const VideoModal = ({ close, open}) => {
     return (
         <Box component='div'>
             <Dialog
-            open={open} 
-            onClose={close} 
+            open={open2} 
+            onClose={close2} 
             >
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                  <DialogTitle>Video Call</DialogTitle>
-                 <DialogTitle><i className='fas fa-times' onClick={close} style={{cursor: 'pointer'}}></i></DialogTitle>
+                 <DialogTitle><i className='fas fa-times' onClick={close2} style={{cursor: 'pointer'}}></i></DialogTitle>
                  </div>
                  <Divider />
 
@@ -63,7 +64,7 @@ const VideoModal = ({ close, open}) => {
                      <Circular value={progress} />
                      <Typography align='center' sx={{pt:3}}>Connecting. <br />Please wait...</Typography>
                  </DialogContent>
-            </Dialog> 
+            </Dialog>
         </Box>
     )
 }

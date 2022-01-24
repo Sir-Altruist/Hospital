@@ -51,7 +51,7 @@ const Landing = () => {
                 variant="h3"
                 sx={{ fontSize: "3rem", fontWeight: "600", color: "#342D7E" }}
               >
-                OLU Catholic Hospital
+                O.L.A Catholic Hospital
               </Typography>
               <Typography sx={{ pt: 2 }}>
                 We provide qualitative health services to our patients on daily
@@ -92,6 +92,7 @@ const Landing = () => {
                   href="https://www.premiumtimesng.com/news/headlines/506402-covid-19-nigeria-records-seven-deaths-249-new-cases-monday.html"
                   style={{ color: "red", textDecoration: "none" }}
                   target="_blank"
+                  rel='noreferrer'
                 >
                   Click here to get News about Covid-19 and Health Updates
                 </a>

@@ -21,6 +21,7 @@ import {
 import Physical from '../../assets/images/physical-new.png'
 import Remote from '../../assets/images/remote-new.png'
 import PopModal from './PopModal';
+import VideoModal from './VideoModal';
 
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -30,11 +31,19 @@ const Transition = forwardRef(function Transition(props, ref) {
 const AppModal = ({ close, open }) => {
 
   const [popOpen, setPopOPen] = useState(false)
+  const [vidOpen, setVidOpen] = useState(false)
   const handlePopOPen = () => {
     setPopOPen(true)
   }
   const handlePopClose = () => {
     setPopOPen(false)
+  }
+
+  const handleVidOPen = () => {
+    setVidOpen(true)
+  }
+  const handleVidClose = () => {
+    setVidOpen(false)
   }
 
     //responsive dialogue box
@@ -67,13 +76,14 @@ const AppModal = ({ close, open }) => {
           </div>
           <div>
             <img src={Remote} width='300' alt='remote' />
-          <Button onClick={close} variant='contained' color='success'>Virtual Appointment</Button>
+          <Button onClick={close} variant='contained' color='success' onClick={handleVidOPen}>Virtual Appointment</Button>
           </div>
           </div>
         </DialogContent>
       </Dialog>
         </Box>
-          <PopModal open1={popOpen} close1={handlePopClose} />
+        <PopModal open1={popOpen} close1={handlePopClose} />
+        <VideoModal open2={vidOpen} close2={handleVidClose} />
           </>
     )
 }
