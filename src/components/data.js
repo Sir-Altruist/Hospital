@@ -72,14 +72,6 @@ const location = [
     {
         icon: <LocationOnIcon fontSize='large' color='error' />,
         name: 'Oyo'
-    },
-    {
-        icon: <LocationOnIcon fontSize='large' color='error'/>,
-        name: 'Ogun'
-    },
-    {
-        icon: <LocationOnIcon fontSize='large' color='error'/>,
-        name: 'Delta'
     }
 ]
 

@@ -11,7 +11,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Layout from "./components/dashboard/Layout";
-import Settings from "./pages/Dashboard/Settings";
+import Upload from "./pages/Dashboard/Upload";
+import Result from "./pages/Dashboard/Result";
+import Patient from "./pages/Login/Patient";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 
 function App() {
   const path = window.location.pathname.split("/")[1];
@@ -23,6 +27,7 @@ function App() {
           <Route path="/login/doctor" element={<Doctor />} />
           <Route path="/login/nurse" element={<Nurse />} />
           <Route path="/login/administrator" element={<Administrator />} />
+          <Route path="/login/patient" element={<Patient />} />
           <Route path="/about" element={<About />} />
           <Route path="/midwifery" element={<Midwifery />} />
           <Route path="/contact" element={<Contact />} />
@@ -30,17 +35,20 @@ function App() {
         </Routes>
       </BrowserRouter>
     ) : (
+      <BrowserRouter>
       <Layout>
-        <BrowserRouter>
           <Routes>
             <Route path="/dashboard" exact element={<Dashboard />} />
-            <Route path="/dashboard/settings" element={<Settings />} />
+            <Route path="/dashboard/result" element={<Result />} />
+            <Route path="/dashboard/upload" element={<Upload />} />
           </Routes>
-        </BrowserRouter>
       </Layout>
+      </BrowserRouter>
     );
 
   return <>{links}</>;
 }
+
+AOS.init();
 
 export default App;

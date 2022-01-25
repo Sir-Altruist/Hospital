@@ -5,6 +5,7 @@ import Navbar from "../components/navigation/Navbar";
 import "./contact.css";
 import { teamData1, teamData2 } from '../components/teamList'
 import Team from '../components/Team'
+import Footer from "../components/navigation/Footer";
 
 const About = () => {
   return (
@@ -13,10 +14,20 @@ const About = () => {
         <Box component="div" className='about-root'>
           <Container>
             <Grid container>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6}
+               data-aos="fade-right"
+               data-aos-delay="50"
+               data-aos-duration="1000"
+               data-aos-easing="ease-in-out"
+               >
                 <img src={AboutImg} alt='about' />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6}
+               data-aos="fade-left"
+               data-aos-delay="60"
+               data-aos-duration="1000"
+               data-aos-easing="ease-in-out"
+               >
                 <Card className='about-card'>
                   <Typography variant='h4' component='h2' className='about-title'>About Us</Typography>
                   <Typography variant='body1' component='p' className='about-content'> 
@@ -39,7 +50,12 @@ const About = () => {
         <Box component='div' className='about-root'>
           <Container>
             <Typography variant='h4' align='center' sx={{ fontWeight: 'bold', pb: 5}}>Meet Our Team</Typography>
-            <Grid container sx={{ mt: 5, mb: 5, display: 'flex', justifyContent: 'center' }}>
+            <Grid container sx={{ mt: 5, mb: 5, display: 'flex', justifyContent: 'center' }}
+             data-aos="fade-up"
+             data-aos-delay="50"
+             data-aos-duration="1500"
+             data-aos-easing="ease-in-out"
+             >
               {teamData1.map((member, i) => {
                 return (
                   <Grid item xs={12} md={4} key={i}>
@@ -48,7 +64,12 @@ const About = () => {
                 )
               })}
             </Grid>
-            <Grid container sx={{ marginTop: '5rem', display: 'flex', justifyContent: 'center', marginBottom: '5rem' }}>
+            <Grid container sx={{ marginTop: '5rem', display: 'flex', justifyContent: 'center', marginBottom: '5rem' }}
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1500"
+            data-aos-easing="ease-in-out"
+            >
               {teamData2.map((member, i) => {
                 return (
                   <Grid item xs={12} md={4} key={i}>
@@ -59,6 +80,7 @@ const About = () => {
             </Grid>
           </Container>
         </Box>
+        <Footer />
         </>
   );
 };

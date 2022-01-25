@@ -1,0 +1,19 @@
+.dash-card {
+    max-width: 20rem; 
+    border-radius: 5%; 
+    background-color: #f1dfd1;
+    background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 74%);
+}
+.active, .notActive {
+    padding-top: 2rem;
+    color: #5A4EEC;
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+}
+.notActive, .notActive:hover {
+   color: #796f6f;
+}
+.download {
+    width: 10rem;
+}

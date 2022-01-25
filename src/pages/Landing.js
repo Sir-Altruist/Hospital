@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
-import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Navbar from "../components/navigation/Navbar";
 import Carousel from "react-material-ui-carousel";
 import { testimonies, clients, location } from "../components/data";
 import Testimonials from "../components/Testimonials";
 import Client from "../components/Client";
-import { Link } from "react-router-dom";
 import Health from "../assets/images/health-remove.png";
 import Location from "../components/Location";
 import Sliders from "../components/Sliders";
 import AppModal from "../components/Modals/AppModal";
-// import PopModal from '../components/Modals/PopModal'
+import LoginModal from "./Login/LoginModal";
+import Footer from "../components/navigation/Footer";
 
 const Landing = () => {
-  const date = new Date();
-  const year = date.getFullYear();
+
 
   //appointment modal
   const [open, setOpen] = useState(false);
   // const [open2, setOpen2] = useState(false)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [patientLogin, setPatientLogin] = useState(false);
+  const handlePatientOpen = () => setPatientLogin(true);
+  const handlePatientClose = () => setPatientLogin(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,7 +41,12 @@ const Landing = () => {
         {/* <div className="background"> */}
         <Container>
           <Grid container sx={{ mt: 5 }}>
-            <Grid item sm={12} md={6} className="leftSide">
+            <Grid item sm={12} md={6} className="leftSide"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            >
               <Typography
                 variant="h3"
                 sx={{ fontSize: "3rem", fontWeight: "600", color: "#342D7E" }}
@@ -83,47 +83,39 @@ const Landing = () => {
                 >
                   Book Appointment
                 </Button>
-                <Button variant="contained" type="button" color="success">
+                <Button variant="contained" type="button" color="success"
+                onClick={handlePatientOpen}>
                   Collect Test Result
                 </Button>
               </div>
-              <marquee style={{ paddingTop: "3rem" }}>
-                <a
-                  href="https://www.premiumtimesng.com/news/headlines/506402-covid-19-nigeria-records-seven-deaths-249-new-cases-monday.html"
-                  style={{ color: "red", textDecoration: "none" }}
-                  target="_blank"
-                  rel='noreferrer'
-                >
-                  Click here to get News about Covid-19 and Health Updates
-                </a>
-              </marquee>
             </Grid>
             <Grid item sm={12} md={1}></Grid>
             <Grid item sm={12} md={5} className="rightSide">
               <Sliders />
             </Grid>
-            {/* <div
-                style={{
-                  backgroundColor: "black",
-                  width: "100%",
-                  height: "10rem",
-                  marginTop: "2rem",
-                }}
-              ></div> */}
           </Grid>
         </Container>
-        {/* </div> */}
         <AppModal close={handleClose} open={open} />
-        {/* <PopModal close={handleClose1} open={open2} /> */}
+        <LoginModal handlePatientClose={handlePatientClose} patientLogin={patientLogin}  />
       </Box>
       <Box component="div" className="section-2">
         <Container>
           <Grid container sx={{ marginTop: "15rem" }}>
-            <Grid item sm={12} md={4}>
+            <Grid item sm={12} md={4} 
+             data-aos="fade-right"
+             data-aos-delay="50"
+             data-aos-duration="1000"
+             data-aos-easing="ease-in-out"
+             >
               <img src={Health} alt="health" />
             </Grid>
             <Grid item sm={12} md={3}></Grid>
-            <Grid item sm={12} md={5}>
+            <Grid item sm={12} md={5}
+             data-aos="fade-left"
+             data-aos-delay="500"
+             data-aos-duration="1000"
+             data-aos-easing="ease-in-out"
+             >
               <Typography variant="h3" sx={{ paddingTop: "10rem" }}>
                 24/7 Service Avaialble
               </Typography>
@@ -186,7 +178,12 @@ const Landing = () => {
           <Grid container sx={{ mt: 5 }}>
             {clients.map((client, i) => {
               return (
-                <Grid item xs={12} sm={6} md={3} key={i}>
+                <Grid item xs={12} sm={6} md={3} key={i}
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                >
                   <Client client={client} />
                 </Grid>
               );
@@ -194,93 +191,7 @@ const Landing = () => {
           </Grid>
         </Container>
       </Box>
-      <Box className="footer">
-        <Container>
-          <Grid container>
-            <Grid item xs={12} md={3}>
-              <Typography variant="h6" align="center" className="contact">
-                Contact Information
-              </Typography>
-              <span className="contact-one">
-                <LocationOnIcon sx={{ color: "white" }} />
-                <Typography variant="body2" sx={{ color: "white" }}>
-                  3, Alfred Rewande Street Opebi, off salvation street, ikeja
-                  lagos
-                </Typography>
-              </span>
-              <span className="contact-two">
-                <MailOutlineIcon sx={{ color: "white" }} />
-                <Typography
-                  variant="body2"
-                  sx={{ color: "white", paddingLeft: "1.5rem" }}
-                >
-                  sterlingtech@support.io
-                </Typography>
-              </span>
-              <span className="contact-three">
-                <PhoneEnabledIcon sx={{ color: "white" }} />
-                <Typography
-                  variant="body2"
-                  sx={{ color: "white", paddingLeft: "1.5rem" }}
-                >
-                  +234-8180907820
-                </Typography>
-              </span>
-              <span className="social">
-                <Link to="/">
-                  <FacebookIcon sx={{ color: "white" }} />
-                </Link>
-                <Link to="/">
-                  <InstagramIcon sx={{ color: "white" }} />
-                </Link>
-                <Link to="/">
-                  <TwitterIcon sx={{ color: "white" }} />
-                </Link>
-                <Link to="/">
-                  <LinkedInIcon sx={{ color: "white" }} />
-                </Link>
-              </span>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography variant="h6" align="center" className="quick">
-                Institutions
-                <ul className="dept-links">
-                  <li> College of Midwifery</li>
-                  <li>Medical Laboratory</li>
-                </ul>
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography variant="h6" align="center" className="department">
-                Departments
-                <ul className="dept-links">
-                  <li> Dental</li>
-                  <li>Family Medicine</li>
-                  <li>Internal Medicine</li>
-                  <li>O & G Surgery</li>
-                  <li>X-ray</li>
-                  <li>Other Laboratory</li>
-                </ul>
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography variant="h6" align="center" className="group">
-                Subsidiaries
-                <ul className="dept-links">
-                  <li> Delta State</li>
-                  <li>Ogun State</li>
-                </ul>
-              </Typography>
-            </Grid>
-          </Grid>
-          <Typography
-            variant="body2"
-            sx={{ color: "white", textAlign: "center", paddingTop: "5rem" }}
-          >
-            &copy; Copyright {year}. All rights reserved
-          </Typography>
-        </Container>
-      </Box>
+      <Footer />   
     </>
   );
 };

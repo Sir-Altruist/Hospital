@@ -14,6 +14,7 @@ import "./contact.css";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import Footer from "../components/navigation/Footer";
 
 const Contact = () => {
   return (
@@ -22,10 +23,20 @@ const Contact = () => {
       <Box component="div" className="contact-root">
         <Container>
           <Grid container>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6}
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1500"
+            data-aos-easing="ease-in-out"
+            >
               <img src={ContactImg} alt="contact" className="contact-img" />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6}
+            data-aos="fade-left"
+            data-aos-delay="50"
+            data-aos-duration="1500"
+            data-aos-easing="ease-in-out"
+            >
               <Card className="contact-card">
                 <Container className="contact-form">
                   <Typography variant="h5" className="contact-title">
@@ -67,7 +78,12 @@ const Contact = () => {
       </Box>
       <Box component='div' style={{ width: '100%', minHeight: '50vh', backgroundColor: '#c4c4c41a', padding: '5rem 0'}}>
         <Container>
-          <Grid container>
+          <Grid container
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+          >
           <Grid item xs={12} md={4}>
             <div>
             <Typography variant='h5' sx={{ pt: 2, fontWeight: 'bold'}}>
@@ -101,6 +117,7 @@ const Contact = () => {
           </Grid>
         </Container>
       </Box>
+      <Footer />
     </>
   );
 };

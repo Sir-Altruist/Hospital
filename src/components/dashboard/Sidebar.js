@@ -1,18 +1,21 @@
 import React from 'react';
-import { ListItem,  Link } from '@mui/material'
-// import { Link} from 'react-router-dom';
+import { ListItem, ListItemIcon, ListItemText } from '@mui/material'
+import {  useLocation, Link } from 'react-router-dom'
 
 const Sidebar = ({ item }) => {
-    // const location = useLocation()
+    const location = useLocation()
   return <>
   <ListItem
   button
+//   sx={{ height: '5rem'}}
+
   >
       <Link
       to={item.path}
-      className='sidemenu'
+      className={location.pathname === item.path ? 'active' : 'notActive'}
       >
-          {item.name}
+          <ListItemIcon>{location.pathname === item.path ? item.icon2 : item.icon1}</ListItemIcon>
+          <ListItemText primary={item.name} />
       </Link>
 
   </ListItem>

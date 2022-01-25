@@ -17,7 +17,11 @@ const Doctor = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [display, setDisplay] = useState(false);
-  const handleDisplay = () => setDisplay(true);
+  const handleDisplay = () => setDisplay(!display);
+  const [rota, setRota] = useState('')
+  const handleRota = e => {
+    setRota(e.target.value)
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -154,18 +158,31 @@ const Doctor = () => {
                 fullWidth
                 variant="standard"
                 className="field"
+                value={rota}
+                onChange={handleRota}
               />
-              <Button
+              {
+                rota === ''
+                ? <Button
                 color="primary"
                 variant="contained"
                 sx={{ mt: 5 }}
-                onClick={handleDisplay}
+                disabled={true}
               >
                 Check
               </Button>
+              : <Button
+              color="primary"
+              variant="contained"
+              sx={{ mt: 5 }}
+              onClick={handleDisplay}
+            >
+              Check
+            </Button>
+              }
               <div>
-                {display && (
-                  <form>
+                {rota !== '' && display && (
+                  <form style={{ marginTop: '3rem'}}>
                     <input type="date" />
                   </form>
                 )}

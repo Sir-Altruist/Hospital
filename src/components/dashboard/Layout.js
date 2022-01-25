@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -19,6 +19,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // import MailIcon from '@mui/icons-material/Mail';
 import dashmenu from './dashmenu'
 import Sidebar from './Sidebar'
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate  } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -67,9 +69,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+
+
 export default function Layout({ children }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate()
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -78,6 +83,11 @@ export default function Layout({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleLogOut = () => {
+    navigate('/login/doctor')
+    window.location.reload()
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -95,6 +105,12 @@ export default function Layout({ children }) {
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             Welcome
+          </Typography>
+          <Typography variant="h6" 
+          noWrap component="div" 
+          style={{ paddingLeft: '5rem', cursor: 'pointer'}} 
+         >
+            Logout<LogoutIcon style={{paddingTop: '1rem'}} fontSize='large'  onClick={handleLogOut}/>
           </Typography>
         </Toolbar>
       </AppBar>

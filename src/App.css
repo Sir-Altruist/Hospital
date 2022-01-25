@@ -122,8 +122,7 @@
 .about {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%),
-    url("./assets/images/bg-img.jpg");
+  background: linear-gradient(rgba(225, 225, 225, 0.95), rgba(225, 225, 225, 0.9)), url("./assets/images/bg-img.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -236,7 +235,7 @@
   min-height: 100vh;
   background-color: #000000;
 }
-.contact,
+.info,
 .quick,
 .department,
 .group {
@@ -245,7 +244,7 @@
   position: relative;
 }
 
-.contact::after,
+.info::after,
 .quick::after,
 .department::after,
 .group::after {
@@ -264,15 +263,15 @@
 .group::after {
   left: 6rem;
 }
-.contact-one,
-.contact-two,
-.contact-three {
+.info-one,
+.info-two,
+.info-three {
   display: flex;
   text-align: center;
   padding-top: 5rem;
 }
-.contact-two,
-.contact-three {
+.info-two,
+.info-three {
   padding-top: 2rem;
 }
 .social {
@@ -292,13 +291,13 @@
 .modal-list {
   list-style-type: none;
 }
-.login {
+.login, .patient {
   width: 100%;
   min-height: 150vh;
   background-color: #c4c4c41a;
   position: relative;
 }
-.login-card, .login-card-1 {
+.login-card, .login-card-1, .patient-card {
   width: 40%;
   min-height: 130vh;
   position: absolute;
@@ -307,10 +306,14 @@
   left: 30%;
   border-radius: 5%;
 }
+.patient-card {
+  top: 15rem;
+  min-height: 50vh;
+}
 .login-card-1 {
   min-height: 80vh;
 }
-.login-form {
+.login-form, .patient-form {
   margin: 2rem 0;
 }
 .field {
@@ -318,6 +321,10 @@
   padding-bottom: 10rem;
   /* background-color: #f6f6f6; */
 }
+.patient-field {
+  margin-bottom: 2rem;
+}
+
 .login-btn {
   margin-top: 3rem;
   margin-bottom: 2rem;

@@ -72,11 +72,11 @@ const AppModal = ({ close, open }) => {
           <div style={{ display: 'flex', justifyContent: 'space-around', marginLeft: '6rem', marginBottom: '3rem'}}>
           <div style={{ marginTop: '1rem'}}>
             <img src={Physical} width='300' alt='physical' />
-            <Button onClick={close} variant='contained' color='info' onClick={handlePopOPen}>In-Person Appointment</Button>
+            <Button variant='contained' color='info' onClick={handlePopOPen}>In-Person Appointment</Button>
           </div>
           <div>
             <img src={Remote} width='300' alt='remote' />
-          <Button onClick={close} variant='contained' color='success' onClick={handleVidOPen}>Virtual Appointment</Button>
+          <Button variant='contained' color='success' onClick={handleVidOPen}>Virtual Appointment</Button>
           </div>
           </div>
         </DialogContent>
