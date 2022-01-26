@@ -11,16 +11,18 @@ import Sliders from "../components/Sliders";
 import AppModal from "../components/Modals/AppModal";
 import LoginModal from "./Login/LoginModal";
 import Footer from "../components/navigation/Footer";
+import axios from 'axios'
+import Headlines from "../components/Headlines";
 
 const Landing = () => {
 
 
   //appointment modal
   const [open, setOpen] = useState(false);
-  // const [open2, setOpen2] = useState(false)
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [patientLogin, setPatientLogin] = useState(false);
+  const [news, setNews] = useState([])
   const handlePatientOpen = () => setPatientLogin(true);
   const handlePatientClose = () => setPatientLogin(false);
 
@@ -29,16 +31,29 @@ const Landing = () => {
       setOpen(true);
     }, 30000);
 
+    const getData = async () => {
+      try {
+      let data = await axios.get('https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=826f8054744147139e1a1e753b9f64e1')
+      let single = data.data.articles
+      console.log(single)
+      setNews(single)
+      }
+      catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
+
   return (
     <>
       <Navbar />
       <Box component="div" className="landing">
-        {/* <div className="background"> */}
         <Container>
           <Grid container sx={{ mt: 5 }}>
             <Grid item sm={12} md={6} className="leftSide"
@@ -100,7 +115,28 @@ const Landing = () => {
       </Box>
       <Box component="div" className="section-2">
         <Container>
-          <Grid container sx={{ marginTop: "15rem" }}>
+        <Grid>
+          <Carousel
+      animation="fade"
+      autoPlay={true}
+      cycleNavigation
+      timeout={300}
+      navButtonsAlwaysVisible={true}
+      indicators={false}
+      navButtonsAlwaysInvisible={true}
+      >
+      {
+        news.map((article, i) => {
+          return (
+            <div key={i} className='headline'>
+              <Headlines article={article} />
+            </div>
+          )
+        })
+      }
+      </Carousel>
+          </Grid>
+          <Grid container sx={{ margin: "5rem 0" }}>
             <Grid item sm={12} md={4} 
              data-aos="fade-right"
              data-aos-delay="50"
