@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { AppBar, Container, Toolbar, Button, Typography } from "@mui/material";
+import { AppBar, Container, Toolbar, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { MedicalDropdown, ServicesDropdown } from "./Dropdown";
+import Logo from '../../assets/images/logo.jpeg'
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -33,15 +34,14 @@ const Navbar = () => {
         <Toolbar>
           <Container>
             <nav className="navbar">
-              <Typography sx={{ wordBreak: "keep-all" }}>
                 <Link
                   to="/"
                   className="brand"
                   style={{ wordBreak: "keep-all" }}
                 >
-                  O.L.A Catholic
+                  <img src={Logo} alt='logo' width='60' />
                 </Link>
-              </Typography>
+                <h1 style={{ color: 'teal'}}>O.L.A</h1>
               <div onClick={handleClick} className="menu-icon">
                 <i
                   className={click ? "fas fa-times" : "fas fa-bars"}

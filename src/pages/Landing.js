@@ -56,12 +56,7 @@ const Landing = () => {
       <Box component="div" className="landing">
         <Container>
           <Grid container sx={{ mt: 5 }}>
-            <Grid item sm={12} md={6} className="leftSide"
-            data-aos="fade-right"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-            >
+            <Grid item sm={12} md={6} className="leftSide">
               <Typography
                 variant="h3"
                 sx={{ fontSize: "3rem", fontWeight: "600", color: "#342D7E" }}
